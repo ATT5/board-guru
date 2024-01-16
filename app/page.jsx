@@ -1,14 +1,18 @@
+"use client";
 import Board from "@/components/Board";
 import Header from "@/components/Header";
-import BoardGuruContext from "@/context/BoardGuruContext";
+import NewTask from "@/components/NewTask";
+import { useContext } from "react";
+import { BoardContext } from "@/context/BoardGuruContext";
 
 export default function Home() {
+  const context = useContext(BoardContext);
+
   return (
-    <main className="w-full  ">
-      <BoardGuruContext>
-        <Header />
-        <Board />
-      </BoardGuruContext>
+    <main className="w-full relative ">
+      <Header />
+      <Board />
+      {context.newTask.open && <NewTask />}
     </main>
   );
 }
