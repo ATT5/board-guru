@@ -35,7 +35,7 @@ const Task = ({ task, index, columnId }) => {
             <img
               src={task.img}
               alt={task.content}
-              className="w-full h-80 object-cover rounded-b-lg"
+              className="w-full h-52 object-cover rounded-b-lg"
             />
           )}
         </section>

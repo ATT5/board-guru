@@ -66,7 +66,7 @@ const NewTask = () => {
       <form
         action=""
         onSubmit={handleAddNewTask}
-        className="bg-gray-50  p-9 rounded-lg flex flex-col gap-2 absolute top-10 left-0 right-0 w-1/2 mx-auto z-20 shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px]"
+        className="bg-gray-50  w-5/6 md:w-1/2 p-9 rounded-lg flex flex-col gap-2 absolute top-10 left-0 right-0  mx-auto z-20 shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px]"
       >
         <h2 className="font-bold">Add a Task</h2>
         <input

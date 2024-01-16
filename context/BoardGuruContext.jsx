@@ -30,11 +30,16 @@ const BoardGuruContext = ({ children }) => {
 
   const [newTask, setNewTask] = useState({ open: false, column: "" });
   const [state, setState] = useState(initialState);
+  const [closeExample, setCloseExample] = useState(true);
 
   useEffect(() => {
-    // Save state to localStorage whenever it changes
-    localStorage.setItem("boardState", JSON.stringify(state));
+    if (typeof window !== "undefined") {
+      // Save state to localStorage whenever it changes
+      localStorage.setItem("boardState", JSON.stringify(state));
+    }
   }, [state]);
+
+  const handleExample = () => setCloseExample(false);
 
   const openNewTaskHandler = (column) =>
     setNewTask({ open: true, column: column });
@@ -75,7 +80,7 @@ const BoardGuruContext = ({ children }) => {
   };
 
   //handle the moves of the tasks 🚀
-  const tasksHandler = (destination, source, draggableId) => {
+  const tasksHandler = (destination, source, draggableId, type) => {
     if (!destination) return;
 
     if (
@@ -83,6 +88,22 @@ const BoardGuruContext = ({ children }) => {
       destination.index === source.index
     )
       return;
+
+    //Reordering columns
+    if (type === "column") {
+      const newColumnOrder = Array.from(state.columnOrder);
+      newColumnOrder.splice(source.index, 1);
+      newColumnOrder.splice(destination.index, 0, draggableId);
+
+      const newState = {
+        ...state,
+        columnOrder: newColumnOrder,
+      };
+
+      setState(newState);
+
+      return;
+    }
 
     const start = state.columns[source.droppableId];
     const finish = state.columns[destination.droppableId];
@@ -142,6 +163,8 @@ const BoardGuruContext = ({ children }) => {
       value={{
         state,
         newTask,
+        closeExample,
+        handleExample,
         tasksHandler,
         openNewTaskHandler,
         closeNewTaskHandler,
