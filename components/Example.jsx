@@ -28,6 +28,7 @@ const Example = () => {
         </p>
 
         <Image
+          priority
           src={videoEx}
           width={500}
           height={350}
