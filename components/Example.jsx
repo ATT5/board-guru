@@ -31,7 +31,7 @@ const Example = () => {
           priority
           src={videoEx}
           alt="video"
-          className="object-cover rounded-md mb-5 w-11/12 h-72"
+          className="object-contain rounded-md mb-5 w-6/12 h-56"
         />
         <button
           onClick={context.handleExample}
