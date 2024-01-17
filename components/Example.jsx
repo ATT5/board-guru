@@ -30,10 +30,8 @@ const Example = () => {
         <Image
           priority
           src={videoEx}
-          width={500}
-          height={350}
           alt="video"
-          className="object-cover rounded-md mb-5"
+          className="object-cover rounded-md mb-5 w-11/12 h-72"
         />
         <button
           onClick={context.handleExample}
