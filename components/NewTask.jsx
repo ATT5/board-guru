@@ -40,6 +40,11 @@ const NewTask = () => {
   const handleAddNewTask = (e) => {
     e.preventDefault();
 
+    const trimmedTaskName = taskName.trim();
+
+    if (!trimmedTaskName) return;
+    
+
     const newTaskId = `task-${Object.keys(context.state.tasks).length + 1}`;
 
     const newTask = {
