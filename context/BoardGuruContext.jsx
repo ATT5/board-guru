@@ -5,8 +5,8 @@ import { useState, useEffect } from "react";
 export const BoardContext = createContext(null);
 
 const BoardGuruContext = ({ children }) => {
-  // Load state from localStorage or use a default state
-  const initialState = JSON.parse(localStorage.getItem("boardState")) || {
+ 
+  const initialState =  {
     tasks: {},
     columns: {
       "column-1": {
@@ -31,13 +31,6 @@ const BoardGuruContext = ({ children }) => {
   const [newTask, setNewTask] = useState({ open: false, column: "" });
   const [state, setState] = useState(initialState);
   const [closeExample, setCloseExample] = useState(true);
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      // Save state to localStorage whenever it changes
-      localStorage.setItem("boardState", JSON.stringify(state));
-    }
-  }, [state]);
 
   const handleExample = () => setCloseExample(false);
 
